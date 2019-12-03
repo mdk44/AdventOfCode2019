@@ -14,6 +14,7 @@ new_lines = []
 for line in lines:
     new_lines.append(line)
 
+# Part 1
 new_lines[1] = 12
 new_lines[2] = 2
 start_num = 0
@@ -28,10 +29,9 @@ while new_lines[start_num] != 99:
         new_lines[output_pos] = new_lines[input1] * new_lines[input2]
     start_num += 4
 
-print "Part 1: " + str(new_lines[0])  #Correct!
+print "Part 1: " + str(new_lines[0])  # Correct!
 
-#rerun part 1 with different values for new_lines 1 and new_lines 2 and run until my 'output' position
-
+# Part 2
 x = 0
 y = 0
 noun = 0
@@ -49,11 +49,11 @@ for x in range(0,99):
             input2 = new_lines[start_num + 2]
             output_pos = new_lines[start_num + 3]
             if new_lines[start_num] == 1:
-                new_lines[output_pos] = lines[input1] + lines[input2]
+                new_lines[output_pos] = new_lines[input1] + new_lines[input2]
             elif new_lines[start_num] == 2:
-                new_lines[output_pos] = lines[input1] * lines[input2]
+                new_lines[output_pos] = new_lines[input1] * new_lines[input2]
             start_num += 4
         if new_lines[0] == 19690720:
             noun = x
             verb = y
-            print 'Part 2: ' + str(noun*100 + verb)
+            print 'Part 2: ' + str(noun*100 + verb) # Correct!
