@@ -1,16 +1,27 @@
-#Test data
-# 1,0,0,0,99 becomes 2,0,0,0,99 (1 + 1 = 2).
-# 2,3,0,3,99 becomes 2,3,0,6,99 (3 * 2 = 6).
-# 2,4,4,5,99,0 becomes 2,4,4,5,99,9801 (99 * 99 = 9801).
-# 1,1,1,4,99,5,6,0,99 becomes 30,1,1,4,2,5,6,0,99
-
-# input_file = 'Day 2\\Input.csv'
-# text_file = open(input_file)
-# lines = text_file.read().split(',')
-
-input_text = '1,0,0,0,99'
+# Test Data
+# input_text = '1,0,0,0,99'
 # input_text = '2,3,0,3,99'
 # input_text = '2,4,4,5,99,0'
 # input_text = '1,1,1,4,99,5,6,0,99'
-lines = [int(line) for line in input_text.split(',')]
-print lines
+# lines = [int(line) for line in input_text.split(',')]
+#    THESE ARE ALL CORRECT
+
+input_file = 'Day 2\\Input.csv'
+text_file = open(input_file)
+lines = [int(line) for line in text_file.read().split(',')]
+
+new_lines = lines
+new_lines[1] = 12
+new_lines[2] = 2
+start_num = 0
+while new_lines[start_num] != 99:
+    input1 = new_lines[start_num + 1]
+    input2 = new_lines[start_num + 2]
+    output_pos = new_lines[start_num + 3]
+    if new_lines[start_num] == 1:
+        new_lines[output_pos] = lines[input1] + lines[input2]
+    elif new_lines[start_num] == 2:
+        new_lines[output_pos] = lines[input1] * lines[input2]
+    start_num += 4
+
+print "Part 1: " + str(new_lines[0])  #Correct!
