@@ -25,3 +25,24 @@ while new_lines[start_num] != 99:
     start_num += 4
 
 print "Part 1: " + str(new_lines[0])  #Correct!
+
+start_num = 0
+output_num = 0
+while new_lines[start_num] != 99:
+    new_lines = lines
+    new_lines[1] = 12
+    new_lines[2] = 2
+    input1 = new_lines[start_num + 1]
+    input2 = new_lines[start_num + 2]
+    if new_lines[start_num] == 1:
+        output_num = lines[input1] + lines[input2]
+    elif new_lines[start_num] == 2:
+        output_num = lines[input1] * lines[input2]
+    start_num += 4
+    print output_num
+    if output_num == 19690720:
+        noun = lines[input1]
+        verb = lines[input2]
+        print noun
+        print verb
+    ##crap
