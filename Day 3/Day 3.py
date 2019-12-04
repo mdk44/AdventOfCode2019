@@ -35,12 +35,21 @@ wire2 = text_file2.read().split(',')
 
 test1 = ['R8','U5','L5','D3']
 test2 = ['U7','R6','D4','L4']
-
 # test1 = ['R75','D30','R83','U83','L12','D49','R71','U7','L72']
 # test2 = ['U62','R66','U55','R34','D71','R55','D58','R83']
-
 # test1 = ['R98','U47','R26','D63','R33','U87','L62','D20','R33','U53','R51']
 # test2 = ['U98','R91','D20','R16','D67','R40','U7','R15','U6','R7']
+
+test1_dir = []
+test1_num = []
+test2_dir = []
+test2_num = []
+for i in test1:
+    test1_dir.append(i[0])
+    test1_num.append(int(i[1:]))
+for j in test2:
+    test2_dir.append(j[0])
+    test2_num.append(int(j[1:]))
 
 start_x = 50
 start_y = 50
