@@ -60,4 +60,4 @@ for y in range(0,100):
         grid[y][x] = NONE
 grid[50][50] = CENTER
 
-print_grid(grid)
+# print_grid(grid)
