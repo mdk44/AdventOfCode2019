@@ -40,19 +40,17 @@ test2 = ['U7','R6','D4','L4']
 # test1 = ['R98','U47','R26','D63','R33','U87','L62','D20','R33','U53','R51']
 # test2 = ['U98','R91','D20','R16','D67','R40','U7','R15','U6','R7']
 
-test1_dir = []
-test1_num = []
-test2_dir = []
-test2_num = []
+wire1_dir = []
+wire1_num = []
+wire2_dir = []
+wire2_num = []
 for i in test1:
-    test1_dir.append(i[0])
-    test1_num.append(int(i[1:]))
+    wire1_dir.append(i[0])
+    wire1_num.append(int(i[1:]))
 for j in test2:
-    test2_dir.append(j[0])
-    test2_num.append(int(j[1:]))
+    wire2_dir.append(j[0])
+    wire2_num.append(int(j[1:]))
 
-start_x = 50
-start_y = 50
 grid = {}
 for y in range(0,100):
     grid[y] = {}
@@ -60,4 +58,79 @@ for y in range(0,100):
         grid[y][x] = NONE
 grid[50][50] = CENTER
 
-# print_grid(grid)
+
+# Wire 1
+cur_x = 50
+cur_y = 50
+new_y = 0
+new_x = 0
+for i in range(0, len(wire1_dir)):
+    if wire1_dir[i] == "U":
+        new_y = cur_y - wire1_num[i]
+        for y in range(cur_y-1, new_y, -1):
+            grid[y][cur_x] = UP
+        grid[new_y][cur_x] = CORNER
+        cur_y = new_y
+    if wire1_dir[i] == "D":
+        new_y = cur_y + wire1_num[i]
+        for y in range(cur_y+1, new_y):
+            grid[y][cur_x] = UP
+        grid[new_y][cur_x] = CORNER
+        cur_y = new_y
+    if wire1_dir[i] == "R":
+        new_x = cur_x + wire1_num[i]
+        for x in range(cur_x+1, new_x):
+            grid[cur_y][x] = ACROSS
+        grid[cur_y][new_x] = CORNER
+        cur_x = new_x
+    if wire1_dir[i] == "L":
+        new_x = cur_x - wire1_num[i]
+        for x in range(cur_x-1, new_x, -1):
+            grid[cur_y][x] = ACROSS
+        grid[cur_y][new_x] = CORNER
+        cur_x = new_x
+
+# Wire 2
+cur_x = 50
+cur_y = 50
+new_y = 0
+new_x = 0
+for i in range(0, len(wire2_dir)):
+    if wire2_dir[i] == "U":
+        new_y = cur_y - wire2_num[i]
+        for y in range(cur_y-1, new_y, -1):
+            if grid[y][cur_x] != NONE:
+                grid[y][cur_x] = INTERSECT
+            else:
+                grid[y][cur_x] = UP
+        grid[new_y][cur_x] = CORNER
+        cur_y = new_y
+    if wire2_dir[i] == "D":
+        new_y = cur_y + wire2_num[i]
+        for y in range(cur_y+1, new_y):
+            if grid[y][cur_x] != NONE:
+                grid[y][cur_x] = INTERSECT
+            else:
+                grid[y][cur_x] = UP
+        grid[new_y][cur_x] = CORNER
+        cur_y = new_y
+    if wire2_dir[i] == "R":
+        new_x = cur_x + wire2_num[i]
+        for x in range(cur_x+1, new_x):
+            if grid[cur_y][x] != NONE:
+                grid[cur_y][x] = INTERSECT
+            else:
+                grid[cur_y][x] = ACROSS
+        grid[cur_y][new_x] = CORNER
+        cur_x = new_x
+    if wire2_dir[i] == "L":
+        new_x = cur_x - wire2_num[i]
+        for x in range(cur_x-1, new_x, -1):
+            if grid[cur_y][x] != NONE:
+                grid[cur_y][x] = INTERSECT
+            else:
+                grid[cur_y][x] = ACROSS
+        grid[cur_y][new_x] = CORNER
+        cur_x = new_x
+
+print_grid(grid)
