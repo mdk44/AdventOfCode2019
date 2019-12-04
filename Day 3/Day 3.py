@@ -42,10 +42,13 @@ test2 = ['U7','R6','D4','L4']
 # test1 = ['R98','U47','R26','D63','R33','U87','L62','D20','R33','U53','R51']
 # test2 = ['U98','R91','D20','R16','D67','R40','U7','R15','U6','R7']
 
+start_x = 50
+start_y = 50
 grid = {}
 for y in range(0,100):
     grid[y] = {}
     for x in range(0,100):
         grid[y][x] = NONE
+grid[50][50] = CENTER
 
 print_grid(grid)
