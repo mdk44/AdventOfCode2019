@@ -95,12 +95,16 @@ cur_x = 50
 cur_y = 50
 new_y = 0
 new_x = 0
+ans_x = []
+ans_y = []
 for i in range(0, len(wire2_dir)):
     if wire2_dir[i] == "U":
         new_y = cur_y - wire2_num[i]
         for y in range(cur_y-1, new_y, -1):
             if grid[y][cur_x] != NONE:
                 grid[y][cur_x] = INTERSECT
+                ans_x.append(cur_x)
+                ans_y.append(y)
             else:
                 grid[y][cur_x] = UP
         grid[new_y][cur_x] = CORNER
@@ -110,6 +114,8 @@ for i in range(0, len(wire2_dir)):
         for y in range(cur_y+1, new_y):
             if grid[y][cur_x] != NONE:
                 grid[y][cur_x] = INTERSECT
+                ans_x.append(cur_x)
+                ans_y.append(y)
             else:
                 grid[y][cur_x] = UP
         grid[new_y][cur_x] = CORNER
@@ -119,6 +125,8 @@ for i in range(0, len(wire2_dir)):
         for x in range(cur_x+1, new_x):
             if grid[cur_y][x] != NONE:
                 grid[cur_y][x] = INTERSECT
+                ans_x.append(x)
+                ans_y.append(cur_y)
             else:
                 grid[cur_y][x] = ACROSS
         grid[cur_y][new_x] = CORNER
@@ -128,9 +136,18 @@ for i in range(0, len(wire2_dir)):
         for x in range(cur_x-1, new_x, -1):
             if grid[cur_y][x] != NONE:
                 grid[cur_y][x] = INTERSECT
+                ans_x.append(x)
+                ans_y.append(cur_y)
             else:
                 grid[cur_y][x] = ACROSS
         grid[cur_y][new_x] = CORNER
         cur_x = new_x
 
 print_grid(grid)
+print ans_x
+print ans_y
+
+man_dist = []
+for a in range(0, len(ans_x)):
+    man_dist.append( abs(ans_x[a] - 50) + abs(ans_y[a] - 50))
+print min(man_dist)
