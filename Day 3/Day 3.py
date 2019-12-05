@@ -33,10 +33,10 @@ text_file2 = open(input_file2)
 wire1 = text_file1.read().split(',')
 wire2 = text_file2.read().split(',')
 
-test1 = ['R8','U5','L5','D3']
-test2 = ['U7','R6','D4','L4']
-# test1 = ['R75','D30','R83','U83','L12','D49','R71','U7','L72']
-# test2 = ['U62','R66','U55','R34','D71','R55','D58','R83']
+# test1 = ['R8','U5','L5','D3']
+# test2 = ['U7','R6','D4','L4']
+test1 = ['R75','D30','R83','U83','L12','D49','R71','U7','L72']
+test2 = ['U62','R66','U55','R34','D71','R55','D58','R83']
 # test1 = ['R98','U47','R26','D63','R33','U87','L62','D20','R33','U53','R51']
 # test2 = ['U98','R91','D20','R16','D67','R40','U7','R15','U6','R7']
 
@@ -52,16 +52,16 @@ for j in test2:
     wire2_num.append(int(j[1:]))
 
 grid = {}
-for y in range(0,100):
+for y in range(0,5000):
     grid[y] = {}
-    for x in range(0,100):
+    for x in range(0,5000):
         grid[y][x] = NONE
-grid[50][50] = CENTER
+grid[2500][2500] = CENTER
 
 
 # Wire 1
-cur_x = 50
-cur_y = 50
+cur_x = 2500
+cur_y = 2500
 new_y = 0
 new_x = 0
 for i in range(0, len(wire1_dir)):
@@ -91,8 +91,8 @@ for i in range(0, len(wire1_dir)):
         cur_x = new_x
 
 # Wire 2
-cur_x = 50
-cur_y = 50
+cur_x = 2500
+cur_y = 2500
 new_y = 0
 new_x = 0
 ans_x = []
@@ -143,11 +143,11 @@ for i in range(0, len(wire2_dir)):
         grid[cur_y][new_x] = CORNER
         cur_x = new_x
 
-print_grid(grid)
-print ans_x
-print ans_y
+# print_grid(grid)
+# print ans_x
+# print ans_y
 
 man_dist = []
 for a in range(0, len(ans_x)):
-    man_dist.append( abs(ans_x[a] - 50) + abs(ans_y[a] - 50))
-print min(man_dist)
+    man_dist.append( abs(ans_x[a] - 2500) + abs(ans_y[a] - 2500))
+print "Part 1: " + str(min(man_dist))
