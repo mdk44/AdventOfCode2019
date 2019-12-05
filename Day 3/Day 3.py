@@ -51,20 +51,24 @@ for j in test2:
     wire2_dir.append(j[0])
     wire2_num.append(int(j[1:]))
 
-grid_size = 2500
-grid_cent = grid_size / 2
+grid_size_x = 500
+grid_size_y = 500
+grid_cent_x = 250
+grid_cent_y = 250
+
+#crap
 
 grid = {}
-for y in range(0,grid_size):
+for y in range(0,grid_size_y):
     grid[y] = {}
-    for x in range(0,grid_size):
+    for x in range(0,grid_size_x):
         grid[y][x] = NONE
-grid[grid_cent][grid_cent] = CENTER
+grid[grid_cent_y][grid_cent_x] = CENTER
 
 
 # Wire 1
-cur_x = grid_cent
-cur_y = grid_cent
+cur_x = grid_cent_x
+cur_y = grid_cent_y
 new_y = 0
 new_x = 0
 for i in range(0, len(wire1_dir)):
@@ -94,8 +98,8 @@ for i in range(0, len(wire1_dir)):
         cur_x = new_x
 
 # Wire 2
-cur_x = grid_cent
-cur_y = grid_cent
+cur_x = grid_cent_x
+cur_y = grid_cent_y
 new_y = 0
 new_x = 0
 ans_x = []
@@ -152,5 +156,5 @@ for i in range(0, len(wire2_dir)):
 
 man_dist = []
 for a in range(0, len(ans_x)):
-    man_dist.append( abs(ans_x[a] - grid_cent) + abs(ans_y[a] - grid_cent))
+    man_dist.append( abs(ans_x[a] - grid_cent_x) + abs(ans_y[a] - grid_cent_y))
 print "Part 1: " + str(min(man_dist))
