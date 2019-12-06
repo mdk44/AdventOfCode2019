@@ -4,4 +4,7 @@ lines = text_file.read().split('\n')
 
 test_inp = ['COM)B', 'B)C', 'C)D', 'D)E', 'E)F', 'B)G', 'G)H', 'D)I', 'E)J', 'J)K', 'K)L']
 
-#basically I want to look at, for every new thing on the right side, if there is an existing left side so that I can add an orbit + 1
+for i in range(0,len(test_inp)):
+    place = test_inp[i].find(')')
+    obj = test_inp[i][0:place]
+    orb = test_inp[i][place + 1:]
