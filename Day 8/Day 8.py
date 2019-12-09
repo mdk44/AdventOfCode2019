@@ -12,7 +12,10 @@ def print_grid(grid):
     for y in sorted(grid.iterkeys()):
         grid_line = ""
         for x in sorted(grid[y].iterkeys()):
-            grid_line += str(grid[y][x])
+            if grid[y][x] == 0:
+                grid_line += "  "
+            elif grid[y][x] == 1:
+                grid_line += " O"
         print grid_line
 
 def image_grid(grid):
@@ -70,5 +73,7 @@ while start_num < len(lines):
     start_num += 150
 
 print "Part 1 -  0: " + str(num_0) + "  1x2: " + str(num_1 * num_2)  # Correct!
+print ""
+print "Part 2:"
 print_grid(grid)
 image_grid(grid)
