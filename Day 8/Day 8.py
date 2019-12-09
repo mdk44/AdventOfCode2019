@@ -72,4 +72,3 @@ while start_num < len(lines):
 print "Part 1 -  0: " + str(num_0) + "  1x2: " + str(num_1 * num_2)  # Correct!
 print_grid(grid)
 image_grid(grid)
-    
