@@ -22,16 +22,16 @@ def image_grid(grid):
     no_fill = (255, 255, 255)
     zero = (0, 0, 0)
     one = (226, 25, 224)
-    width = 25
-    height = 6
+    width = 625
+    height = 150
     img = Image.new('RGB', (width, height), color = no_fill)
     dr = ImageDraw.Draw(img)
     for y in grid:
         for x in grid[y]:
             if grid[y][x] == 0:
-                dr.rectangle(((x,y),(x,y)),fill=zero)
+                dr.rectangle(((25*x,25*y),(25*x+25,25*y+25)),fill=zero,width=5)
             elif grid[y][x] == 1:
-                dr.rectangle(((x,y),(x,y)),fill=one)
+                dr.rectangle(((25*x,25*y),(25*x+25,25*y+25)),fill=one,width=5)
     img.save(output_file)
 
 grid = {}
