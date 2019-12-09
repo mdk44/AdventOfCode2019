@@ -143,6 +143,7 @@ new_y = 0
 new_x = 0
 ans_x = []
 ans_y = []
+ints = []
 for i in range(0, len(wire2_dir)):
     if wire2_dir[i] == "U":
         new_y = cur_y - wire2_num[i]
@@ -151,6 +152,7 @@ for i in range(0, len(wire2_dir)):
                 grid[y][cur_x] = INTERSECT
                 ans_x.append(cur_x)
                 ans_y.append(y)
+                ints.append(i)
             else:
                 grid[y][cur_x] = UP2
         grid[new_y][cur_x] = CORNER2
@@ -162,6 +164,7 @@ for i in range(0, len(wire2_dir)):
                 grid[y][cur_x] = INTERSECT
                 ans_x.append(cur_x)
                 ans_y.append(y)
+                ints.append(i)
             else:
                 grid[y][cur_x] = UP2
         grid[new_y][cur_x] = CORNER2
@@ -173,6 +176,7 @@ for i in range(0, len(wire2_dir)):
                 grid[cur_y][x] = INTERSECT
                 ans_x.append(x)
                 ans_y.append(cur_y)
+                ints.append(i)
             else:
                 grid[cur_y][x] = ACROSS2
         grid[cur_y][new_x] = CORNER2
@@ -184,16 +188,57 @@ for i in range(0, len(wire2_dir)):
                 grid[cur_y][x] = INTERSECT
                 ans_x.append(x)
                 ans_y.append(cur_y)
+                ints.append(i)
             else:
                 grid[cur_y][x] = ACROSS2
         grid[cur_y][new_x] = CORNER2
         cur_x = new_x
 
+steps = 0
+for i in range(0,min(ints)+1):
+    steps += wire2_num[i]
+
+cur_x = grid_cent_x
+cur_y = grid_cent_y
+new_y = 0
+new_x = 0
+flag = 0
+while flag == 0:
+    for i in range(0, len(wire1_dir)):
+        if wire1_dir[i] == "U":
+            new_y = cur_y - wire1_num[i]
+            for y in range(cur_y-1, new_y, -1):
+                steps += 1
+                if grid[y][cur_x] == INTERSECT:
+                    flag = 1
+            grid[new_y][cur_x] = CORNER
+            cur_y = new_y
+        if wire1_dir[i] == "D":
+            new_y = cur_y + wire1_num[i]
+            for y in range(cur_y+1, new_y):
+                steps += 1
+                if grid[y][cur_x] == INTERSECT:
+                    flag = 1
+            cur_y = new_y
+        if wire1_dir[i] == "R":
+            new_x = cur_x + wire1_num[i]
+            for x in range(cur_x+1, new_x):
+                steps += 1
+                if grid[cur_y][x] == INTERSECT:
+                    flag = 1
+            cur_x = new_x
+        if wire1_dir[i] == "L":
+            new_x = cur_x - wire1_num[i]
+            for x in range(cur_x-1, new_x, -1):
+                steps += 1
+                if grid[cur_y][x] == INTERSECT:
+                    flag = 1
+            cur_x = new_x
+
 image_grid(grid)
-# print ans_x
-# print ans_y
 
 man_dist = []
 for a in range(0, len(ans_x)):
     man_dist.append( abs(ans_x[a] - grid_cent_x) + abs(ans_y[a] - grid_cent_y))
 print "Part 1: " + str(min(man_dist))  # Correct but holy crap lol
+print "Part 2: " + str(steps)
