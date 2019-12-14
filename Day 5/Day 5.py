@@ -31,4 +31,8 @@ while new_lines[start_num] != 99:
         print new_lines[output_pos]
         start_num += 2
 print new_lines
-            
+
+test1 = 1002
+test2 = str(test1)
+print test2[-2:]
+print test2[-4]
