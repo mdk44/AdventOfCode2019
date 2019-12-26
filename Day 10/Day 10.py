@@ -52,11 +52,14 @@ def get_angles(points, origin):
 
 def get_highest(lines):
     maxm = 0
+    max_point = None
     points = make_points(lines)
     for point in points:
         count = get_angles(points, point)
         if count > maxm:
             maxm = count
-    return maxm
+            max_point = point
+    return maxm, max_point
 
-print("Part 1: " + str(get_highest(lines))) # Correct!
+point, count = get_highest(lines)
+print("Part 1: " + str(point) + ", " + str(count)) # Correct!
