@@ -1,4 +1,5 @@
 import math
+import itertools
 
 # input_file = 'Day 10\\Test1.csv'
 # input_file = 'Day 10\\Test2.csv'
@@ -41,7 +42,7 @@ def make_points(lines):
                 points.append(point)
     return points
 
-def get_angles(points, origin):
+def get_angle_count(points, origin):
     angles = dict()
     for point in points:
         if point == origin:
@@ -55,11 +56,33 @@ def get_highest(lines):
     max_point = None
     points = make_points(lines)
     for point in points:
-        count = get_angles(points, point)
+        count = get_angle_count(points, point)
         if count > maxm:
             maxm = count
             max_point = point
     return maxm, max_point
 
-point, count = get_highest(lines)
+def get_angle_map(points, origin):
+    angles = dict()
+    for point in points:
+        if point == origin:
+            continue
+        angle = origin.get_angle(point) - 90
+        if angle < 0:
+            angle += 360
+        if angle not in angles:
+            angles[angle] = []
+        angles[angle].append(point)
+    return angles
+
+
+count, point = get_highest(lines)
 print("Part 1: " + str(point) + ", " + str(count)) # Correct!
+
+angle_map = get_angle_map(make_points(lines),point)
+sort_item = sorted (angle_map.keys())
+
+point = angle_map[sort_item[199]]
+
+for pnt in point:
+    print("Part 2: " + str(pnt.x * 100 + pnt.y))
