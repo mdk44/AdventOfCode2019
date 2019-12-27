@@ -37,18 +37,13 @@ while new_lines[start_num] != 99:
         start_num += 2
     elif new_lines[start_num] == 4:
         output_pos = new_lines[start_num + 1]
-        print new_lines[output_pos]
+        print(new_lines[output_pos])
         start_num += 2
-print new_lines
+print(new_lines)
 
 test1 = 1002
 test2 = str(test1)
 testlen = len(test2)
-print int(test2[-2:])
-print test2[-testlen]
-print testlen
-
-def greeting(name: str) -> str:
-    return 'Hello ' + name
-
-print(greeting('Matt'))
+print(int(test2[-2:]))
+print(test2[-testlen])
+print(testlen)
