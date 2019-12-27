@@ -33,8 +33,6 @@ cur_x = 0
 cur_y = 0
 new_y = 0
 new_x = 0
-steps = 0
-all_steps = 0
 for i in range(0, len(wire1_dir)):
     if wire1_dir[i] == "U":
         new_y = cur_y - wire1_num[i]
@@ -45,94 +43,89 @@ for i in range(0, len(wire1_dir)):
     if wire1_dir[i] == "D":
         new_y = cur_y + wire1_num[i]
         for y in range(cur_y+1, new_y):
-            grid[y][cur_x] = UP
-        grid[new_y][cur_x] = CORNER
+            grid[y, cur_x] = UP
+        grid[new_y, cur_x] = CORNER
         cur_y = new_y
     if wire1_dir[i] == "R":
         new_x = cur_x + wire1_num[i]
         for x in range(cur_x+1, new_x):
-            grid[cur_y][x] = ACROSS
-        grid[cur_y][new_x] = CORNER
+            grid[cur_y, x] = ACROSS
+        grid[cur_y, new_x] = CORNER
         cur_x = new_x
     if wire1_dir[i] == "L":
         new_x = cur_x - wire1_num[i]
         for x in range(cur_x-1, new_x, -1):
-            grid[cur_y][x] = ACROSS
-        grid[cur_y][new_x] = CORNER
+            grid[cur_y, x] = ACROSS
+        grid[cur_y, new_x] = CORNER
         cur_x = new_x
-    steps += 1
-    # if cur_x == 3249 and cur_y == 5197:
-    #     all_steps += steps
-
 
 # Wire 2
-cur_x = grid_cent_x
-cur_y = grid_cent_y
+cur_x = 0
+cur_y = 0
 new_y = 0
 new_x = 0
 ans_x = []
 ans_y = []
-steps = 0
-wire2_steps = []
 for i in range(0, len(wire2_dir)):
     if wire2_dir[i] == "U":
         new_y = cur_y - wire2_num[i]
         for y in range(cur_y-1, new_y, -1):
-            steps += 1
-            if grid[y][cur_x] != NONE:
-                grid[y][cur_x] = INTERSECT
-                ans_x.append(cur_x)
-                ans_y.append(y)
-                wire2_steps.append(steps)
-            else:
-                grid[y][cur_x] = UP2
-        grid[new_y][cur_x] = CORNER2
+            try:
+                if grid[y, cur_x] != NONE:
+                    grid[y, cur_x] = INTERSECT
+                    ans_x.append(cur_x)
+                    ans_y.append(y)
+                else:
+                    grid[y, cur_x] = UP2
+            except KeyError:
+                grid[y, cur_x] = UP2
+        grid[new_y, cur_x] = CORNER2
         cur_y = new_y
     if wire2_dir[i] == "D":
         new_y = cur_y + wire2_num[i]
         for y in range(cur_y+1, new_y):
-            steps += 1
-            if grid[y][cur_x] != NONE:
-                grid[y][cur_x] = INTERSECT
-                ans_x.append(cur_x)
-                ans_y.append(y)
-                wire2_steps.append(steps)
-            else:
-                grid[y][cur_x] = UP2
-        grid[new_y][cur_x] = CORNER2
+            try:
+                if grid[y, cur_x] != NONE:
+                    grid[y, cur_x] = INTERSECT
+                    ans_x.append(cur_x)
+                    ans_y.append(y)
+                else:
+                    grid[y, cur_x] = UP2
+            except KeyError:
+                grid[y, cur_x] = UP2
+        grid[new_y, cur_x] = CORNER2
         cur_y = new_y
     if wire2_dir[i] == "R":
         new_x = cur_x + wire2_num[i]
         for x in range(cur_x+1, new_x):
-            steps += 1
-            if grid[cur_y][x] != NONE:
-                grid[cur_y][x] = INTERSECT
-                ans_x.append(x)
-                ans_y.append(cur_y)
-                wire2_steps.append(steps)
-            else:
-                grid[cur_y][x] = ACROSS2
-        grid[cur_y][new_x] = CORNER2
+            try:
+                if grid[cur_y, x] != NONE:
+                    grid[cur_y, x] = INTERSECT
+                    ans_x.append(x)
+                    ans_y.append(cur_y)
+                else:
+                    grid[cur_y, x] = ACROSS2
+            except KeyError:
+                grid[cur_y, x] = ACROSS2
+        grid[cur_y, new_x] = CORNER2
         cur_x = new_x
     if wire2_dir[i] == "L":
         new_x = cur_x - wire2_num[i]
         for x in range(cur_x-1, new_x, -1):
-            steps += 1
-            if grid[cur_y][x] != NONE:
-                grid[cur_y][x] = INTERSECT
-                ans_x.append(x)
-                ans_y.append(cur_y)
-                wire2_steps.append(steps)
-            else:
-                grid[cur_y][x] = ACROSS2
-        grid[cur_y][new_x] = CORNER2
+            try:
+                if grid[cur_y, x] != NONE:
+                    grid[cur_y, x] = INTERSECT
+                    ans_x.append(x)
+                    ans_y.append(cur_y)
+                else:
+                    grid[cur_y, x] = ACROSS2
+            except KeyError:
+                grid[cur_y, x] = ACROSS2
+        grid[cur_y, new_x] = CORNER2
         cur_x = new_x
-
-image_grid(grid)
 
 man_dist = []
 for a in range(0, len(ans_x)):
-    man_dist.append( abs(ans_x[a] - grid_cent_x) + abs(ans_y[a] - grid_cent_y))
-print "Part 1: " + str(min(man_dist))  # Correct but holy crap lol
-print "Part 2: "
-print wire2_steps
+    man_dist.append( abs(ans_x[a]) + abs(ans_y[a]))
+
+print("Part 1: " + str(min(man_dist)))  # Correct!
