@@ -47,3 +47,8 @@ testlen = len(test2)
 print int(test2[-2:])
 print test2[-testlen]
 print testlen
+
+def greeting(name: str) -> str:
+    return 'Hello ' + name
+
+print(greeting('Matt'))
