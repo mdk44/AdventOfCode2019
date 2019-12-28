@@ -129,3 +129,4 @@ for a in range(0, len(ans_x)):
     man_dist.append( abs(ans_x[a]) + abs(ans_y[a]))
 
 print("Part 1: " + str(min(man_dist)))  # Correct!
+
