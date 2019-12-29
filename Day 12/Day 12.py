@@ -105,3 +105,5 @@ while i in range(0,steps):
 # print moon4
 
 print("Part 1: " + str(moon1_energy + moon2_energy + moon3_energy + moon4_energy)) # Correct!
+
+# How the eff to do part 2?
