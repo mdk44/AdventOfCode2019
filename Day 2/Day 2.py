@@ -29,7 +29,7 @@ while new_lines[start_num] != 99:
         new_lines[output_pos] = new_lines[input1] * new_lines[input2]
     start_num += 4
 
-print "Part 1: " + str(new_lines[0])  # Correct!
+print("Part 1: " + str(new_lines[0]))  # Correct!
 
 # Part 2
 x = 0
@@ -56,4 +56,4 @@ for x in range(0,99):
         if new_lines[0] == 19690720:
             noun = x
             verb = y
-            print 'Part 2: ' + str(noun*100 + verb) # Correct!
+            print('Part 2: ' + str(noun*100 + verb)) # Correct!
