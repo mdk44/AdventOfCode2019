@@ -55,14 +55,12 @@ def opcode_5(puzzle_input, index):
         return param_pairs[1].get_value(puzzle_input)
     return index + 3
 
-
 def opcode_6(puzzle_input, index):
     code = str(puzzle_input[index]).rjust(4, '0')
     param_pairs = get_parameter_pairs(code, puzzle_input[index: index + 4])
     if param_pairs[0].get_value(puzzle_input) == 0:
         return param_pairs[1].get_value(puzzle_input)
     return index + 3
-
 
 def opcode_7(puzzle_input, index):
     code = str(puzzle_input[index]).rjust(5, '0')
@@ -74,7 +72,6 @@ def opcode_7(puzzle_input, index):
     else:
         puzzle_input[puzzle_input[index + 3]] = 0
     return index + 4
-
 
 def opcode_8(puzzle_input, index):
     code = str(puzzle_input[index]).rjust(5, '0')
