@@ -1,6 +1,9 @@
 import re
-import Day5
+import sys
 import itertools
+sys.path.insert(0, 'Day5')
+from Day5 import opcodes, get_parameter_pairs
+from itertools import permutations
 
 input_file = 'Day7\\Input.csv'
 text_file = open(input_file)
