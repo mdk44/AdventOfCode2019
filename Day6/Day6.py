@@ -1,4 +1,4 @@
-input_file = 'Day 6\\Input.csv'
+input_file = 'Day6\\Input.csv'
 text_file = open(input_file)
 lines = text_file.read().split('\n')
 # lines = ['COM)B', 'B)C', 'C)D', 'D)E', 'E)F', 'B)G', 'G)H', 'D)I', 'E)J', 'J)K', 'K)L'] # Part 1

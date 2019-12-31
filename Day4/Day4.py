@@ -14,7 +14,7 @@ for num in range(start_num, end_num + 1):
         if dig1 == dig2 or dig2 == dig3 or dig3 == dig4 or dig4 == dig5 or dig5 == dig6:
             pass_count += 1
 
-print "Part 1: " + str(pass_count) # Correct!
+print("Part 1: " + str(pass_count)) # Correct!
 
 pass_count = 0
 for num in range(start_num, end_num + 1):
@@ -42,4 +42,4 @@ for num in range(start_num, end_num + 1):
     if flag == 1:
         pass_count += 1
 
-print "Part 2: " + str(pass_count) # Correct!
+print("Part 2: " + str(pass_count)) # Correct!

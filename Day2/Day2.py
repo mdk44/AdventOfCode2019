@@ -6,7 +6,7 @@
 # lines = [int(line) for line in input_text.split(',')]
 #    THESE ARE ALL CORRECT
 
-input_file = 'Day 2\\Input.csv'
+input_file = 'Day2\\Input.csv'
 text_file = open(input_file)
 lines = [int(line) for line in text_file.read().split(',')]
 

@@ -1,4 +1,4 @@
-input_file = 'Day 16\\Input.csv'
+input_file = 'Day16\\Input.csv'
 # text_file = open(input_file)
 text_file = '12345678'
 

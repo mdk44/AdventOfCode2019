@@ -1,10 +1,10 @@
 import re
 import sys
 import time
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw # Does not seem to work in Python 3.8
 
-input_file = 'Day 8\\Input.csv'
-output_file = 'Day 8\\Password.png'
+input_file = 'Day8\\Input.csv'
+output_file = 'Day8\\Password.png'
 text_file = open(input_file)
 lines = [int(line) for line in text_file.read()]
 
@@ -16,7 +16,7 @@ def print_grid(grid):
                 grid_line += "  "
             elif grid[y][x] == 1:
                 grid_line += " O"
-        print grid_line
+        print(grid_line)
 
 def image_grid(grid):
     no_fill = (255, 255, 255)
@@ -72,8 +72,8 @@ while start_num < len(lines):
         num_2 = count_2
     start_num += 150
 
-print "Part 1 -  0: " + str(num_0) + "  1x2: " + str(num_1 * num_2)  # Correct!
-print ""
-print "Part 2:"
+print("Part 1 -  0: " + str(num_0) + "  1x2: " + str(num_1 * num_2))  # Correct!
+print("")
+print("Part 2:")
 print_grid(grid)
 image_grid(grid)

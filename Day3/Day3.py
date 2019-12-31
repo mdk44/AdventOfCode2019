@@ -3,13 +3,13 @@ import sys
 import time
 from PIL import Image, ImageDraw
 
-input_file1 = 'Day 3\\Wire1.csv'
+input_file1 = 'Day3\\Wire1.csv'
 text_file1 = open(input_file1)
-input_file2 = 'Day 3\\Wire2.csv'
+input_file2 = 'Day3\\Wire2.csv'
 text_file2 = open(input_file2)
 wire1 = text_file1.read().split(',')
 wire2 = text_file2.read().split(',')
-output_file = 'Day 3\\Wires.png'
+output_file = 'Day3\\Wires.png'
 
 CORNER = 0
 NONE = 1
@@ -72,7 +72,7 @@ def print_grid(grid):
         grid_line = ""
         for x in sorted(grid[y].iterkeys()):
             grid_line += grid_rep[grid[y][x]]
-        print grid_line
+        print(grid_line)
 
 # test1 = ['R8','U5','L5','D3']
 # test2 = ['U7','R6','D4','L4']
@@ -210,6 +210,6 @@ image_grid(grid)
 man_dist = []
 for a in range(0, len(ans_x)):
     man_dist.append( abs(ans_x[a] - grid_cent_x) + abs(ans_y[a] - grid_cent_y))
-print "Part 1: " + str(min(man_dist))  # Correct but holy crap lol
-print "Part 2: "
-print wire2_steps
+print("Part 1: " + str(min(man_dist)))  # Correct but holy crap lol
+print("Part 2: ")
+print(wire2_steps)

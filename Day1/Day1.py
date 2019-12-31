@@ -1,4 +1,4 @@
-input_file = 'Day 1\\Input.csv'
+input_file = 'Day1\\Input.csv'
 text_file = open(input_file)
 lines = text_file.read().split()
 
@@ -8,7 +8,7 @@ for line in lines:
     cur_wt = int(int(line) / 3) - 2
     sum_p1 += cur_wt
 
-print "Sum for Part 1: " + str(sum_p1)
+print("Sum for Part 1: " + str(sum_p1))
 
 sum_p2 = 0
 for line in lines:
@@ -18,4 +18,4 @@ for line in lines:
         if cur_wt > 0:
             sum_p2 += cur_wt
 
-print "Sum for Part 2: " + str(sum_p2)
+print("Sum for Part 2: " + str(sum_p2))
